@@ -6,6 +6,7 @@ import joblib
 import pickle
 import os
 
+# Set the page config for Streamlit
 st.set_page_config(page_title="COVID-19 Risk & Spread Simulator", layout="wide")
 
 # Title
@@ -15,22 +16,28 @@ st.markdown("A tool for both **patient-level prediction** and **population-level
 # Load patient-level prediction model
 @st.cache_resource
 def load_patient_model():
-    model_path = 'covid_prediction_model.pkl'
+    model_path = os.path.join(os.getcwd(), 'covid_prediction_model.pkl')  # Ensure absolute path
+    print(f"Loading model from {model_path}")  # Debugging line
     if os.path.exists(model_path):
+        print("Model file found, loading...")  # Debugging line
         return joblib.load(model_path)
     else:
+        print("Model file not found.")  # Debugging line
         st.error("Model file 'covid_prediction_model.pkl' not found.")
         return None
 
-# Load forest model for infection risk 
+# Load forest model for infection risk (similar to patient model)
 def load_forest_model():
     try:
-        with open("covid_prediction_model.pkl", "rb") as f:
+        model_path = os.path.join(os.getcwd(), 'covid_prediction_model.pkl')  # Ensure absolute path
+        print(f"Loading forest model from {model_path}")  # Debugging line
+        with open(model_path, "rb") as f:
             return pickle.load(f)
     except FileNotFoundError:
         st.error("Trained model file 'covid_prediction_model.pkl' not found.")
         return None
 
+# Load the models
 model = load_patient_model()
 forest_model = load_forest_model()
 
@@ -150,4 +157,3 @@ with tab2:
     - **Model Limitations**: Simplified assumptions; not for medical use.
     - **Educational Use**: Intended for understanding, not diagnosis or official predictions.
     """)
-
