@@ -3,8 +3,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
-joblib.dump(model, 'patient_model.joblib')
-
 import pickle
 import os
 
