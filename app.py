@@ -24,12 +24,12 @@ st.markdown("A tool for both **patient-level prediction** and **population-level
 @st.cache_resource
 def load_patient_model():
     model_path = os.path.join(os.getcwd(), 'covid_prediction_model.pkl')  # Ensure absolute path
-    print(f"Loading model from {model_path}")  # Debugging line
+    print(f"Loading model from {model_path}")  
     if os.path.exists(model_path):
-        print("Model file found, loading...")  # Debugging line
+        print("Model file found, loading...") 
         return joblib.load(model_path)
     else:
-        print("Model file not found.")  # Debugging line
+        print("Model file not found.") 
         st.error("Model file 'covid_prediction_model.pkl' not found.")
         return None
 
