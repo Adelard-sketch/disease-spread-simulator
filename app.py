@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import joblib
 
 # Load the existing model from a file
-model = joblib.load('existing_model.pkl')  # Replace with the path to your model file
+model = joblib.load('covid_prediction_model.pkl')  # Replace with the path to your model file
 
 # Save it again (possibly with a different filename)
 joblib.dump(model, 'covid_prediction_model.pkl')
