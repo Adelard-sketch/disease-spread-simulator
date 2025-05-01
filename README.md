@@ -7,7 +7,12 @@ Disease Spread Simulator is a machine learning-based web app developed using Str
 ##Setup and Running Instructions
 
 Install Dependencies: pip install -r requirements.txt
-
+                      streamlit
+                      scikit-learn
+                      joblib
+                      pandas
+                      numpy
+                      matplotlib
 Requires Python 3.13.
 
 Prepare Files:
