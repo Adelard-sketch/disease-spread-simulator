@@ -3,6 +3,13 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import joblib
+
+# Load the existing model from a file
+model = joblib.load('existing_model.pkl')  # Replace with the path to your model file
+
+# Save it again (possibly with a different filename)
+joblib.dump(model, 'covid_prediction_model.pkl')
+
 import pickle
 import os
 
